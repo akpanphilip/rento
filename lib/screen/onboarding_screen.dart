@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'root_screen.dart';
+
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
 
@@ -22,7 +24,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           Padding(
             padding: const EdgeInsets.only(right: 20, top: 20),
             child: InkWell(
-              onTap: () => null,
+              onTap: () {
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (_) => const RootPage()));
+              },
               child: const Text(
                 'Skip',
                 style: TextStyle(
@@ -83,8 +88,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                 curve: Curves.easeIn);
                           }
                         } else {
-                          // Navigator.pushReplacement(context,
-                          //     MaterialPageRoute(builder: () => const Login()));
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (_) => const RootPage()));
                         }
                       });
                     },
