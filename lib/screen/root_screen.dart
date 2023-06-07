@@ -85,8 +85,11 @@ class _RootPageState extends State<RootPage> {
                   child: const CarDetail(),
                   type: PageTransitionType.bottomToTop));
         },
-        backgroundColor: Colors.black,
-        child: const Icon(Icons.file_upload_outlined),
+        backgroundColor: Colors.white,
+        child: const Icon(
+          Icons.file_upload_outlined,
+          color: Colors.black,
+        ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: AnimatedBottomNavigationBar(

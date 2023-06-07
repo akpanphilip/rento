@@ -3,6 +3,12 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
+final List<String> imgList = [
+  './assets/images/2019-honda-civic-sedan.png',
+  './assets/images/2019-honda-civic-sedan.png',
+  './assets/images/2019-honda-civic-sedan.png'
+];
+
 class CarDetail extends StatefulWidget {
   const CarDetail({super.key});
 
@@ -40,13 +46,17 @@ class _CarDetailState extends State<CarDetail> {
                     style: TextStyle(fontSize: 12, color: Colors.white),
                   ),
                   Container(
-                    child: Image(
-                      image: AssetImage(
-                          "assets/images/2019-honda-civic-sedan.png"),
-                      height: 180,
-                      width: double.infinity,
+                    child: CarouselSlider(
+                      options: CarouselOptions(
+                        autoPlay: true,
+                        aspectRatio: 2.0,
+                        enlargeCenterPage: true,
+                        enlargeStrategy: CenterPageEnlargeStrategy.height,
+                      ),
+                      items: imageSliders,
                     ),
                   ),
+                  SizedBox(height: 30),
                   Text(
                     "Description",
                     style: TextStyle(
@@ -59,7 +69,7 @@ class _CarDetailState extends State<CarDetail> {
                     padding: EdgeInsets.all(10),
                     decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(5),
                     ),
                     child: Text(
                         "This is a random description of the car. You can rent and if you discover a problem na you sabi. Meanwhile it is durable and highly efficient. Not really sure of what to type again but i have to end it yet with a believe that this text written are enough description."),
@@ -101,7 +111,7 @@ class _CarDetailState extends State<CarDetail> {
                         style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.black,
                             shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10))),
+                                borderRadius: BorderRadius.circular(5))),
                         onPressed: () {},
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -122,6 +132,38 @@ class _CarDetailState extends State<CarDetail> {
   }
 }
 
+final List<Widget> imageSliders = imgList
+    .map((item) => Container(
+          child: Container(
+            margin: EdgeInsets.all(5.0),
+            child: ClipRRect(
+                borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                child: Stack(
+                  children: <Widget>[
+                    Image.asset(item, fit: BoxFit.cover, width: 1000.0),
+                    Positioned(
+                      bottom: 0.0,
+                      left: 0.0,
+                      right: 0.0,
+                      child: Container(
+                        padding: EdgeInsets.symmetric(
+                            vertical: 5.0, horizontal: 5.0),
+                        // child: Text(
+                        //   'No. ${imgList.indexOf(item)} image',
+                        //   style: TextStyle(
+                        //     color: Colors.white,
+                        //     fontSize: 20.0,
+                        //     fontWeight: FontWeight.bold,
+                        //   ),
+                        // ),
+                      ),
+                    ),
+                  ],
+                )),
+          ),
+        ))
+    .toList();
+
 class Specification extends StatelessWidget {
   final IconData icon;
   final String text;
@@ -138,7 +180,7 @@ class Specification extends StatelessWidget {
       width: 70,
       height: 90,
       decoration: BoxDecoration(
-          color: Colors.white, borderRadius: BorderRadius.circular(10)),
+          color: Colors.white, borderRadius: BorderRadius.circular(5)),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
