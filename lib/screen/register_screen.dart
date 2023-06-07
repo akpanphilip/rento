@@ -2,19 +2,17 @@
 
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:rento/screen/forgot_password_screen.dart';
+import 'package:rento/screen/login_screen.dart';
 import 'package:rento/screen/root_screen.dart';
 
-import 'register_screen.dart';
-
-class Login extends StatefulWidget {
-  const Login({super.key});
+class Register extends StatefulWidget {
+  const Register({super.key});
 
   @override
-  State<Login> createState() => _LoginState();
+  State<Register> createState() => _RegisterState();
 }
 
-class _LoginState extends State<Login> {
+class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -23,19 +21,24 @@ class _LoginState extends State<Login> {
       backgroundColor: Colors.white,
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-        // wrap with singlechildview
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Login to your account',
+              'Create your account',
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
             ),
             SizedBox(height: 10),
             CustomTextField(
               obscureText: false,
-              hintText: 'Username',
+              hintText: 'Full Name',
+              // icon: Icons.person_rounded,
+            ),
+            SizedBox(height: 10),
+            CustomTextField(
+              obscureText: false,
+              hintText: 'Email',
               // icon: Icons.email_rounded,
             ),
             SizedBox(height: 10),
@@ -68,53 +71,6 @@ class _LoginState extends State<Login> {
                 ),
               ),
             ),
-            SizedBox(height: 10),
-            GestureDetector(
-              onTap: () {
-                Navigator.pushReplacement(
-                    context,
-                    PageTransition(
-                        child: const ForgotPassword(),
-                        type: PageTransitionType.bottomToTop));
-              },
-              child: Center(
-                child: Text.rich(TextSpan(children: [
-                  TextSpan(
-                      text: 'Forgot Password?',
-                      style: TextStyle(color: Colors.black)),
-                  TextSpan(
-                      text: ' Reset Here',
-                      style: TextStyle(
-                          color: Colors.black, fontWeight: FontWeight.w600))
-                ])),
-              ),
-            ),
-            SizedBox(height: 20),
-            Row(
-              children: [
-                Expanded(child: Divider()),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
-                  child: Text('OR'),
-                ),
-                Expanded(child: Divider())
-              ],
-            ),
-            SizedBox(height: 20),
-            Container(
-              width: size.width,
-              decoration: BoxDecoration(
-                  border: Border.all(color: Colors.black),
-                  borderRadius: BorderRadius.circular(10)),
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  // Icon(Icons.g_mobiledata_sharp),
-                  Text('Sign In with Google')
-                ],
-              ),
-            ),
             SizedBox(
               height: 20,
             ),
@@ -123,16 +79,16 @@ class _LoginState extends State<Login> {
                 Navigator.pushReplacement(
                     context,
                     PageTransition(
-                        child: const Register(),
+                        child: const Login(),
                         type: PageTransitionType.bottomToTop));
               },
               child: Center(
                 child: Text.rich(TextSpan(children: [
                   TextSpan(
-                      text: "Don't have an account?",
+                      text: "Already have an account?",
                       style: TextStyle(color: Colors.black)),
                   TextSpan(
-                      text: ' Register',
+                      text: ' Sign In',
                       style: TextStyle(
                           color: Colors.black, fontWeight: FontWeight.w600))
                 ])),

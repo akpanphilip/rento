@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:rento/screen/onboarding_screen.dart';
 
@@ -10,10 +12,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: 'Onboarding screen',
       home: OnboardingScreen(),
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(fontFamily: 'Exo-Regular'),
     );
   }
 }

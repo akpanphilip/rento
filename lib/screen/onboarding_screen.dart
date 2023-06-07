@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'login_screen.dart';
 import 'root_screen.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -25,8 +26,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             padding: const EdgeInsets.only(right: 20, top: 20),
             child: InkWell(
               onTap: () {
-                Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (_) => const RootPage()));
+                Navigator.pushReplacement(
+                    context, MaterialPageRoute(builder: (_) => const Login()));
               },
               child: const Text(
                 'Skip',
@@ -88,10 +89,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                 curve: Curves.easeIn);
                           }
                         } else {
-                          Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (_) => const RootPage()));
+                          Navigator.pushReplacement(context,
+                              MaterialPageRoute(builder: (_) => const Login()));
                         }
                       });
                     },
@@ -102,7 +101,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     )),
                 padding: const EdgeInsets.all(4),
                 decoration: const BoxDecoration(
-                    shape: BoxShape.circle, color: Colors.teal),
+                    shape: BoxShape.circle, color: Colors.black),
               ))
         ],
       ),
@@ -119,7 +118,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       width: isActive ? 20 : 8,
       margin: const EdgeInsets.only(right: 5.0),
       decoration: BoxDecoration(
-          color: Colors.teal, borderRadius: BorderRadius.circular(5)),
+          color: Colors.black, borderRadius: BorderRadius.circular(5)),
     );
   }
 
@@ -159,7 +158,7 @@ class CreatePage extends StatelessWidget {
           Text(
             logoText,
             style: const TextStyle(
-                fontSize: 40, fontWeight: FontWeight.w600, color: Colors.teal),
+                fontSize: 40, fontWeight: FontWeight.w600, color: Colors.black),
           ),
           const SizedBox(height: 20),
           Text(

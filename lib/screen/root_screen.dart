@@ -1,5 +1,7 @@
 // the root page shall control the screen menu transition
 
+// ignore_for_file: unused_import
+
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
@@ -27,37 +29,45 @@ class _RootPageState extends State<RootPage> {
   List<IconData> iconList = [
     Icons.home_outlined,
     Icons.directions_car_outlined,
+    // Icons.directions_car_outlined,
     Icons.history_outlined,
     Icons.account_circle_outlined
   ];
 
   // List of the pages title
-  List<String> titleList = ['Home', 'Cars', 'History', 'Profile'];
+  List<String> titleList = [
+    'Home',
+    'All cars',
+    // 'Top rated',
+    'History',
+    'Profile'
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              titleList[_bottomNavIndex],
-              style: const TextStyle(
-                  color: Colors.teal,
-                  fontWeight: FontWeight.w600,
-                  fontSize: 20),
-            ),
-            const Icon(
-              Icons.account_circle_outlined,
-              size: 30,
-              color: Colors.grey,
-            )
-          ],
-        ),
-        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-        elevation: 0,
-      ),
+      backgroundColor: Colors.white,
+      // appBar: AppBar(
+      //   title: Row(
+      //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      //     children: const [
+      //       Text(
+      //         'RENTOs',
+      //         style: TextStyle(
+      //             fontWeight: FontWeight.w600,
+      //             fontSize: 20,
+      //             color: Colors.teal),
+      //       ),
+      //       Icon(
+      //         Icons.account_circle_outlined,
+      //         size: 30,
+      //         color: Colors.grey,
+      //       )
+      //     ],
+      //   ),
+      //   backgroundColor: Colors.white,
+      //   elevation: 0,
+      // ),
 
       // body to hold the pages widgets
       body: IndexedStack(
@@ -71,14 +81,14 @@ class _RootPageState extends State<RootPage> {
               PageTransition(
                   child: const Login(), type: PageTransitionType.bottomToTop));
         },
-        backgroundColor: Colors.teal,
+        backgroundColor: Colors.black,
         child: const Icon(Icons.file_upload_outlined),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: AnimatedBottomNavigationBar(
-          splashColor: Colors.teal,
-          activeColor: Colors.teal,
-          inactiveColor: Colors.teal.withOpacity(.3),
+          splashColor: Colors.black,
+          activeColor: Colors.black,
+          inactiveColor: Colors.black.withOpacity(.3),
           icons: iconList,
           activeIndex: _bottomNavIndex,
           gapLocation: GapLocation.center,
