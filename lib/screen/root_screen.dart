@@ -5,11 +5,14 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:rento/models/cars.dart';
 import 'package:rento/screen/all_cars_screen.dart';
 import 'package:rento/screen/history_screen.dart';
 import 'package:rento/screen/home_screen.dart';
 import 'package:rento/screen/login_screen.dart';
 import 'package:rento/screen/profile_screen.dart';
+
+import 'car_detail_screen.dart';
 
 class RootPage extends StatefulWidget {
   const RootPage({super.key});
@@ -79,7 +82,8 @@ class _RootPageState extends State<RootPage> {
           Navigator.push(
               context,
               PageTransition(
-                  child: const Login(), type: PageTransitionType.bottomToTop));
+                  child: const CarDetail(),
+                  type: PageTransitionType.bottomToTop));
         },
         backgroundColor: Colors.black,
         child: const Icon(Icons.file_upload_outlined),

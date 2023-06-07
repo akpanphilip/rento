@@ -37,6 +37,9 @@ dependencies:
   cupertino_icons: ^1.0.2
   animated_bottom_navigation_bar: ^1.2.0
   page_transition: ^2.0.9
+  getwidget: ^3.1.1
+  flutter_swiper: ^1.1.6
+  carousel_slider: ^4.2.1
 
 dev_dependencies:
   flutter_test:
