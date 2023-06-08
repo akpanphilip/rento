@@ -17,10 +17,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.transparent,
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.grey.shade200,
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 20, top: 20),
@@ -40,70 +40,86 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           )
         ],
       ),
-      body: Stack(
-        alignment: Alignment.bottomCenter,
-        children: [
-          PageView(
-            onPageChanged: (int page) {
-              setState(() {
-                currentIndex = page;
-              });
-            },
-            controller: _pageController,
-            children: const [
-              CreatePage(
-                  logoText: 'RENTO',
-                  leadText: 'Rent cars that meet your need',
-                  subText: 'some random text as description'),
-              CreatePage(
-                  logoText: 'RENTO',
-                  leadText: 'Easy lease your car for rent',
-                  subText: 'some random text as description'),
-              CreatePage(
-                  logoText: 'RENTO',
-                  leadText: 'Find a driver for hire',
-                  subText: 'some random text as description')
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Colors.grey.shade200,
+              Colors.grey,
+              Colors.grey,
+              Colors.grey.shade200
             ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomLeft,
           ),
-          Positioned(
-            bottom: 80,
-            left: 30,
-            child: Row(
-              children: _buildIndicator(),
+        ),
+        child: Stack(
+          alignment: Alignment.bottomCenter,
+          children: [
+            PageView(
+              onPageChanged: (int page) {
+                setState(() {
+                  currentIndex = page;
+                });
+              },
+              controller: _pageController,
+              children: const [
+                CreatePage(
+                    logoText: 'RENTO',
+                    leadText: 'Rent cars that meet your need',
+                    subText: 'some random text as description'),
+                CreatePage(
+                    logoText: 'RENTO',
+                    leadText: 'Easy lease your car for rent',
+                    subText: 'some random text as description'),
+                CreatePage(
+                    logoText: 'RENTO',
+                    leadText: 'Find a driver for hire',
+                    subText: 'some random text as description')
+              ],
             ),
-          ),
-          // buttons
-          Positioned(
-              bottom: 60,
-              right: 30,
-              child: Container(
-                // ignore: sort_child_properties_last
-                child: IconButton(
-                    onPressed: () {
-                      setState(() {
-                        if (currentIndex < 2) {
-                          currentIndex++;
-                          if (currentIndex < 3) {
-                            _pageController.nextPage(
-                                duration: const Duration(milliseconds: 300),
-                                curve: Curves.easeIn);
+            Positioned(
+              bottom: 80,
+              left: 30,
+              child: Row(
+                children: _buildIndicator(),
+              ),
+            ),
+            // buttons
+            Positioned(
+                bottom: 60,
+                right: 30,
+                child: Container(
+                  // ignore: sort_child_properties_last
+                  child: IconButton(
+                      onPressed: () {
+                        setState(() {
+                          if (currentIndex < 2) {
+                            currentIndex++;
+                            if (currentIndex < 3) {
+                              _pageController.nextPage(
+                                  duration: const Duration(milliseconds: 300),
+                                  curve: Curves.easeIn);
+                            }
+                          } else {
+                            Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (_) => const Login()));
                           }
-                        } else {
-                          Navigator.pushReplacement(context,
-                              MaterialPageRoute(builder: (_) => const Login()));
-                        }
-                      });
-                    },
-                    icon: const Icon(
-                      Icons.arrow_forward_ios,
-                      size: 24,
-                      color: Colors.white,
-                    )),
-                padding: const EdgeInsets.all(4),
-                decoration: const BoxDecoration(
-                    shape: BoxShape.circle, color: Colors.black),
-              ))
-        ],
+                        });
+                      },
+                      icon: const Icon(
+                        Icons.arrow_forward_ios,
+                        size: 24,
+                        color: Colors.white,
+                      )),
+                  padding: const EdgeInsets.all(4),
+                  decoration: const BoxDecoration(
+                      shape: BoxShape.circle, color: Colors.black),
+                ))
+          ],
+        ),
       ),
     );
   }
